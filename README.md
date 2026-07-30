@@ -20,82 +20,103 @@
 
 ---
 
-## Overview
+## 📌 Overview
 
-ZerFi is a WPS (Wi-Fi Protected Setup) security auditing tool built for Android devices running Termux. It automates Pixie Dust and Bruteforce attacks against WPS-enabled routers, allowing security researchers and network administrators to evaluate the strength of their own wireless infrastructure.
+ZerFi is a **WPS (Wi-Fi Protected Setup) security auditing tool** built for Android devices running Termux. It automates Pixie Dust and Bruteforce attacks against WPS-enabled routers, allowing security researchers and network administrators to evaluate the strength of their own wireless infrastructure.
 
-ZerFi v2.0 is a complete rewrite of the original v1 engine, introducing a global command system, session management, reporting, improved stability, and a built-in interactive help guide — all optimized for Android / Termux.
+ZerFi v2.0 is a complete rewrite with a global command system, session management, reporting, improved stability, and a built-in interactive help guide — all optimized for Android / Termux.
 
-> This tool is intended for authorized security testing only. Only use it on networks you own or have explicit permission to test.
-
----
-<div align="center">
-  <a href="https://youtu.be/Y73jDqTqkxI">
-    <img src="https://img.shields.io/badge/zerfi_full_setup_video_tutorial-2EA043?style=for-the-badge&logo=android&logoColor=white" alt="ZerFi Full Setup Video Tutorial">
-  </a><br> </div>
-
-## Requirements
-
-- Android device with root access (Magisk or KernelSU)
-- [Termux](https://termux.dev) installed
-- Root-capable WiFi adapter (internal wlan0 or external)
+> **⚠️ For authorized testing only. Only use on networks you own or have permission to test.**
 
 ---
 
-## Installation
+## 📋 Requirements
 
-ZerFi v2.0 installs globally. Once set up, you can run it from any directory using the `zerfi` command.
+| Requirement | Details |
+|---|---|
+| **Device** | Android (rooted with Magisk or KernelSU) |
+| **Terminal** | [Termux](https://termux.dev) from F-Droid |
+| **Root** | Working `su` binary (Magisk recommended) |
+| **WiFi** | Internal wlan0 or external USB adapter |
 
-### Method 1 — One Command (Recommended)
+---
+
+## 🚀 One-Click Install
+
+Copy and paste this single command in Termux:
 
 ```bash
 curl -sLo installer.sh https://raw.githubusercontent.com/ZeronModz/ZerFi/main/installer.sh && bash installer.sh
 ```
 
-This will automatically update packages, install all dependencies, clone the repository, and register the `zerfi` global command.
+This will:
+1. Update all Termux packages
+2. Install required packages (`python`, `wpa-supplicant`, `pixiewps`, `iw`, etc.)
+3. Clone ZerFi from GitHub
+4. Install Python dependencies
+5. Register the `zerfi` global command in `$PREFIX/bin`
 
-### Method 2 — Manual
+After installation, type `zerfi` to start.
+
+---
+
+## 📦 Manual Installation
+
+If you prefer to install step by step:
 
 ```bash
+# 1. Update Termux
 pkg update && pkg upgrade -y
-pkg install root-repo git tsu python wpa-supplicant pixiewps iw -y
+
+# 2. Install dependencies
+pkg install root-repo -y
+pkg install git tsu python wpa-supplicant pixiewps iw -y
+
+# 3. Clone ZerFi
 git clone https://github.com/ZeronModz/ZerFi
 cd ZerFi
+
+# 4. Install Python dependencies
+pip install -r requirements.txt --break-system-packages
+
+# 5. Run local setup
 chmod +x install.sh
 bash install.sh
 ```
 
 ---
 
-## Commands
+## 🔧 Available Commands
+
+After installation, the `zerfi` command is available globally:
 
 | Command | Description |
 |---|---|
-| `zerfi` | Run ZerFi with default settings (wlan0 + Pixie Dust) |
-| `zerfi menu` | Open ZerFi interactive menu without auto-attack |
-| `zerfi old` | Run the legacy engine (w1.py) with wlan0 |
+| `zerfi` | Run with defaults (wlan0 + Pixie Dust) |
+| `zerfi menu` | Open interactive menu (no auto-attack) |
+| `zerfi old` | Run legacy engine (w1.py) |
 | `zerfi update` | Pull latest updates from GitHub |
-| `zerfi help` | Open the built-in interactive help guide |
-| `zerfi fix` | Fix root / superuser issues |
-| `zerfi contact` | Contact the developer |
+| `zerfi help` | Open interactive help guide |
+| `zerfi fix` | Fix root/superuser issues |
+| `zerfi contact` | Contact developer |
 
 ---
 
-## Usage
+## 🎯 Usage Examples
 
-**Default run — scan nearby networks and attack:**
+**Quick scan + attack:**
 ```bash
 zerfi
 ```
 
 **Pixie Dust on a specific router:**
 ```bash
-zerfi -i wlan0 -b <BSSID> -K
+zerfi -i wlan0 -b AA:BB:CC:DD:EE:FF -K
 ```
 
 **Bruteforce on a specific router:**
 ```bash
-zerfi -i wlan0 -b <BSSID> -B
+zerfi -i wlan0 -b AA:BB:CC:DD:EE:FF -B
 ```
 
 **Pixie Dust without touching Android WiFi settings:**
@@ -103,66 +124,110 @@ zerfi -i wlan0 -b <BSSID> -B
 zerfi -i wlan0 -K --dts
 ```
 
-**Resume a previous session:**
+**Scan, select network, then attack:**
+```bash
+zerfi -i wlan0 -K
+```
+
+**View saved sessions:**
 ```bash
 zerfi --list-sessions
-zerfi -i wlan0 --resume-session <BSSID>
 ```
 
-**Generate an HTML report:**
+**Resume a previous session:**
 ```bash
-zerfi -i wlan0 -b <BSSID> -K --html-report
+zerfi -i wlan0 --resume-session AA:BB:CC:DD:EE:FF
 ```
 
-For the full argument reference, run `zerfi help` and select option 5.
+**Generate HTML report:**
+```bash
+zerfi -i wlan0 -b AA:BB:CC:DD:EE:FF -K --html-report
+```
+
+**Slow bruteforce (avoid lockout):**
+```bash
+zerfi -i wlan0 -b AA:BB:CC:DD:EE:FF -B -d 3
+```
+
+**Full argument reference:** Run `zerfi help` and select option 5.
 
 ---
 
-## Troubleshooting
+## 🎨 Features
 
-**"No superuser binary detected"**
+### Attack Modes
+- **Pixie Dust** (`-K`) — Fast offline PIN extraction
+- **Bruteforce** (`-B`) — Try all PINs (up to 11000)
+- **Push Button Connect** (`--pbc`) — WPS button mode
+- **Smart Auto Scan** — Scan once, attack all vulnerable networks
 
-Run the built-in fix first:
-```bash
-zerfi fix
-```
+### Session Management
+- Save and resume attacks (`--resume-session`)
+- View all saved sessions (`--list-sessions`)
+- Auto-reset attacked networks (`--auto-reset`)
 
-If the issue persists, use the dedicated fix script:
-```bash
-curl -sO https://raw.githubusercontent.com/ZeronModz/fix-termux-root/main/fix.sh && chmod +x fix.sh && ./fix.sh
-```
+### Reporting
+- HTML report generation (`--html-report`)
+- CSV / JSON / TXT output
+- Detailed or summary mode
 
-Manual solutions: [github.com/ZeronModz/fix-termux-root](https://github.com/ZeronModz/fix-termux-root)
+### Security Analysis
+- Signal strength analysis before attack (`--signal-analysis`)
+- Vulnerability check (`--check-vuln`)
+- Weak WPS algorithm detection (`--detect-weak-algo`)
+- Pixie Dust vulnerable router list (`--pixie-list`)
+
+### Android-Specific
+- `--dts` — Don't touch Android WiFi settings
+- `--mtk-wifi` — MediaTek WiFi driver support
+- `--handle-rfkill` — Auto-unblock rfkill
+- `--iface-down` — Bring interface down after exit
 
 ---
 
-**Common issues and fixes**
+## 🔍 How It Works
+
+ZerFi uses `wpa_supplicant` to communicate with WPS-enabled routers:
+
+1. **Scan** — Discovers nearby WPS networks using `iw` scan
+2. **Analyze** — Identifies router model, checks vulnerability databases
+3. **Attack** — Runs Pixie Dust (fast) or Bruteforce (thorough)
+4. **Extract** — Captures WPS PIN and WPA PSK
+5. **Save** — Stores results locally with session tracking
+6. **Report** — Generates HTML/CSV/JSON reports
+
+---
+
+## 🛠 Troubleshooting
 
 | Problem | Fix |
 |---|---|
-| "Run it as root" error | Run `su` first, then retry |
-| "Unable to up interface" | Check interface name with `ip link show` |
-| wpa_supplicant crash | Run `pkill wpa_supplicant`, then retry |
-| No WPS networks found | Disable Location/GPS, toggle WiFi off and on |
-| Router keeps locking | Add `-d 3` delay or use `--lock-delay 120` |
-| WiFi rfkill blocked | Use `--handle-rfkill` or run `rfkill unblock wifi` |
-| Pixie Dust not working | Router may not be vulnerable — switch to Bruteforce (`-B`) |
+| "Run it as root" | Run `zerfi fix` first |
+| "No superuser binary detected" | `zerfi fix` or use [fix-termux-root](https://github.com/ZeronModz/fix-termux-root) |
+| "Unable to up interface" | Check name with `ip link show` |
+| wpa_supplicant crash | `pkill wpa_supplicant` then retry |
+| No WPS networks found | Disable Location/GPS, toggle WiFi |
+| Router keeps locking | Add `-d 3` or use `--lock-delay 120` |
+| WiFi rfkill blocked | Use `--handle-rfkill` or `rfkill unblock wifi` |
+| Pixie Dust not working | Router not vulnerable → use `-B` (bruteforce) |
+| "Address already in use" | Previous socket file — auto-cleaned on restart |
+| After Ctrl+C glitch | Auto-cleanup handles terminal + processes |
 
 ---
 
-## Changelog
+## 📄 Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for a full list of changes between versions.
-
----
-
-## Disclaimer
-
-ZerFi is provided for educational and authorized penetration testing purposes only. You are solely responsible for ensuring you have permission to test any network. The author is not liable for any misuse, damage, or legal consequences resulting from the use of this tool.
+See [CHANGELOG.md](CHANGELOG.md) for the full version history.
 
 ---
 
-## Author
+## ⚠️ Disclaimer
+
+ZerFi is provided for **educational and authorized penetration testing purposes only**. You are solely responsible for ensuring you have permission to test any network. The author is **not liable** for any misuse, damage, or legal consequences.
+
+---
+
+## 👤 Author
 
 **DevZeron (Hasan)**
 
@@ -170,12 +235,12 @@ ZerFi is provided for educational and authorized penetration testing purposes on
 |---|---|
 | GitHub | [ZeronModz](https://github.com/ZeronModz) |
 | Telegram | [@DevZeron](https://t.me/DevZeron) |
+| Telegram Channel | [@DevZeron](https://t.me/DevZeron) |
 
-Honorable mentions include: rofl0r, Rayhan, Alamin, Sojib, Sanji, Mustakin, Sakib, rizzi
+Honorable mentions: rofl0r, Rayhan, Alamin, Sojib, Sanji, Mustakin, Sakib, rizzi
 
 ---
 
 <div align="center">
-If ZerFi has been useful, consider leaving a star on GitHub.<br>
-It helps the project grow and encourages further development.
+⭐ If ZerFi has been useful, consider leaving a star on GitHub — it helps the project grow.
 </div>
