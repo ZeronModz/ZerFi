@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "public": true,
+  "outputDirectory": "public",
+  "buildCommand": null,
+  "devCommand": null,
+  "installCommand": null
+}
