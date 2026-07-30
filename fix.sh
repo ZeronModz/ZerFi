@@ -10,10 +10,19 @@ trap 'echo -e "\n${C_B_YLW}[ ! ] Script interrupted. Exiting...${R}"; kill 0; ex
 
 clear
 echo -e "${C_B_GRN}${B}"
-echo "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰"
-echo "        F I X   T E R M U X   R O O T          "
-echo "           Powered by: ZeronModz            "
-echo "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰"
+echo "███████╗███████╗██████╗ ███████╗██╗"
+echo "╚══███╔╝██╔════╝██╔══██╗██╔════╝██║"
+echo "  ███╔╝ █████╗  ██████╔╝█████╗  ██║"
+echo " ███╔╝  ██╔══╝  ██╔══██╗██╔══╝  ██║"
+echo "███████╗███████╗██║  ██║██║     ██║"
+echo "╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝"
+
+echo
+echo "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰"
+echo "        F I X   T E R M U X   R O O T"
+echo "         Powered by: ZeronModz"
+echo "▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰"
+echo
 echo -e "${R}"
 
 success() { echo -e "${C_B_GRN}[ ✔ ]${R} ${C_D_GRN}${1}${R}"; }
