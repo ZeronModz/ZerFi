@@ -3,82 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#09090b">
-    
-    <title>ZerFi v2.0 - Advanced WiFi Hacking Tool for Termux</title>
-    <meta name="title" content="ZerFi v2.0 - Advanced WiFi Hacking Tool for Termux">
-    <meta name="description" content="ZerFi is a powerful and automated WiFi security testing tool optimized for Android devices running Termux. Exploit WPS vulnerabilities effortlessly.">
-    <meta name="keywords" content="ZerFi, WiFi Hacking Tool, Termux WiFi Hack, WPS Vulnerability, Pixie Dust Attack, Brute-force Attack, DevZeron">
+    <meta name="theme-color" content="#0A0A0F">
+    <title>ZerFi v2.0 — Advanced WiFi Security Auditing Tool for Termux</title>
+    <meta name="description" content="ZerFi is a powerful, automated WiFi security testing tool optimized for Android/Termux. Exploit WPS vulnerabilities with Pixie Dust & Brute-force attacks.">
+    <meta name="keywords" content="ZerFi, WiFi Hacking, Termux, WPS Vulnerability, Pixie Dust, Brute-force, DevZeron">
     <meta name="author" content="DevZeron (Hasan)">
     <meta name="robots" content="index, follow">
-<meta name="google-site-verification" content="HIecq8Gf8Th60mz0_OtRvsddh43EelqsH19wl5lzt5c" />
-    
+    <meta name="google-site-verification" content="HIecq8Gf8Th60mz0_OtRvsddh43EelqsH19wl5lzt5c">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="ZerFi - Advanced WiFi Security Testing">
+    <meta property="og:title" content="ZerFi — Advanced WiFi Security Auditing">
     <meta property="og:description" content="Automate Pixie Dust and Brute-force attacks on Termux with ZerFi. Built for ethical hackers and security researchers.">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="bg-noise"></div>
+    <div class="bg-glow"></div>
     <div class="bg-grid"></div>
 
+    <!-- ═══ Header ═══ -->
     <header>
         <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-network-wired"></i>
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fas fa-terminal"></i></span>
                 <span>ZerFi</span>
-            </div>
+            </a>
             <a href="https://github.com/ZeronModz/ZerFi" target="_blank" class="github-star-btn">
-                <i class="fas fa-star"></i> Star on GitHub
+                <i class="fas fa-star"></i> <span>Star on GitHub</span>
             </a>
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <div class="badge">v2.0 - Global Installation</div>
-            <h1>Advanced <span class="text-gradient">WiFi Hacking</span> Tool</h1>
-            <p>A powerful and automated WiFi security testing tool specifically optimized for Android devices running Termux. It evaluates the security of wireless networks by exploiting WPS vulnerabilities, seamlessly automating Pixie Dust and Brute-force attacks.</p>
-            
-            <div class="hero-assets">
-                <div class="visitor-count">
-                    <img src="https://visitor-badge.laobi.icu/badge?page_id=ZeronModz.zerfi" alt="Visitor Count">
+    <!-- ═══ Hero ═══ -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge-group">
+                <span class="badge"><i class="fas fa-bolt"></i> v2.0</span>
+                <span class="badge badge-b"><i class="fas fa-globe"></i> Global Install</span>
+            </div>
+
+            <h1>Advanced <span class="text-gradient">WiFi Security</span> Auditing Tool</h1>
+            <p class="hero-subtitle">
+                A powerful, automated WiFi security testing tool optimized for Android devices running Termux. 
+                Evaluate wireless network security by exploiting WPS vulnerabilities with Pixie Dust and Brute-force attacks.
+            </p>
+
+            <div class="terminal-hero">
+                <div class="terminal-bar">
+                    <div class="terminal-dots">
+                        <span class="terminal-dot r"></span>
+                        <span class="terminal-dot y"></span>
+                        <span class="terminal-dot g"></span>
+                    </div>
+                    <span class="terminal-title">zerfi@launch:~$</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">zerfi --scan</span></div>
+                    <div class="terminal-line"><span class="output">[+] Scanning nearby networks...</span></div>
+                    <div class="terminal-line"><span class="output">[+] Found <span style="color:var(--primary)">5</span> WPS-enabled targets</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">zerfi -i wlan0 --auto</span></div>
+                    <div class="terminal-line"><span class="success">✓ Auto-pwn mode engaged</span></div>
+                    <div class="terminal-line"><span class="output">[•] Target:  <span style="color:var(--text-primary)">D-Link DIR-615</span></span></div>
+                    <div class="terminal-line"><span class="output">[•] BSSID:   <span style="color:var(--text-primary)">AA:BB:CC:DD:EE:FF</span></span></div>
+                    <div class="terminal-line"><span class="output">[•] Pixie Dust attack initiated...</span></div>
+                    <div class="terminal-line"><span class="success">✓ WPS PIN recovered: <span style="color:var(--warning)">12345678</span></span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="cmd">_<span class="terminal-cursor"></span></span></div>
                 </div>
             </div>
-        </section>
 
-        <section class="card box-reveal">
-            <h2><i class="fas fa-clipboard-list icon-primary"></i> Prerequisites</h2>
-            <p>Before installing ZerFi, ensure your device meets the following requirements:</p>
-            <ul class="custom-list">
-                <li>A <strong>rooted</strong> Android device.</li>
-                <li><strong>Termux</strong> application installed.</li>
-            </ul>
-        </section>
+            <div class="hero-cta">
+                <a href="#install" class="btn btn-primary"><i class="fas fa-download"></i> Quick Install</a>
+                <a href="#commands" class="btn btn-secondary"><i class="fas fa-terminal"></i> View Commands</a>
+            </div>
+        </div>
+    </section>
 
-        <section class="card box-reveal">
-            <h2><i class="fas fa-download icon-primary"></i> Installation</h2>
-            <p>ZerFi v2.0 installs globally on your system. Once installed, you can run it from any directory.</p>
-            
-            <div class="method-container">
-                <h3>Method 1: One-Command Installation (Recommended)</h3>
-                <p>Simply paste the following command into Termux to automatically download and set up everything:</p>
+    <!-- ═══ Features ═══ -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-header box-reveal">
+                <h2>Why <span class="text-gradient">ZerFi</span>?</h2>
+                <p>Purpose-built for Android Termux — no bloat, just results.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card box-reveal">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Pixie Dust Attack</h3>
+                    <p>Automated WPS Pixie Dust attack that recovers WPA/WPA2 passwords by exploiting weak PIN algorithms.</p>
+                </div>
+                <div class="feature-card box-reveal">
+                    <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Online Brute-force</h3>
+                    <p>Dictionary-based online WPS brute-force with support for custom PIN lists and session resume.</p>
+                </div>
+                <div class="feature-card box-reveal">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Auto-Exploit Mode</h3>
+                    <p>One-pass scanner that automatically selects the best attack vector for each target network.</p>
+                </div>
+                <div class="feature-card box-reveal">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Signal Analysis</h3>
+                    <p>Analyzes signal strength before attack to filter weak targets, maximizing success rate.</p>
+                </div>
+                <div class="feature-card box-reveal">
+                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                    <h3>Router Database</h3>
+                    <p>Built-in database of Pixie Dust vulnerable router models; query any model on the fly.</p>
+                </div>
+                <div class="feature-card box-reveal">
+                    <div class="feature-icon"><i class="fas fa-file-lines"></i></div>
+                    <h3>HTML Reports</h3>
+                    <p>Generate detailed HTML penetration test reports with full session data and results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Prerequisites ═══ -->
+    <section class="section" id="prereqs">
+        <div class="container">
+            <div class="card box-reveal">
+                <h2><i class="fas fa-clipboard-list"></i> Prerequisites</h2>
+                <p>Before installing, ensure your device meets these requirements:</p>
+                <ul class="custom-list">
+                    <li>A <strong>rooted</strong> Android device (required for monitor mode).</li>
+                    <li><strong>Termux</strong> application installed from F-Droid or GitHub.</li>
+                    <li>At least <strong>500MB</strong> of free storage space.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Installation ═══ -->
+    <section class="section" id="install">
+        <div class="container">
+            <div class="section-header box-reveal">
+                <h2>Installation</h2>
+                <p>ZerFi v2.0 installs globally — run it from anywhere.</p>
+            </div>
+
+            <div class="card box-reveal">
+                <h3><i class="fas fa-bolt" style="color:var(--primary)"></i> Method 1: One-Command Install</h3>
+                <p>Quickest way — paste this into Termux:</p>
                 <div class="code-wrapper">
-                    <button class="copy-btn" title="Copy to clipboard"><i class="far fa-copy"></i></button>
+                    <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
                     <code>curl -sLo installer.sh https://raw.githubusercontent.com/ZeronModz/ZerFi/main/installer.sh && bash installer.sh</code>
                 </div>
             </div>
 
-            <div class="method-container mt-4">
-                <h3>Method 2: Manual Installation</h3>
-                <p>If you prefer to clone and set up the repository manually, run the following commands sequentially:</p>
+            <div class="card box-reveal">
+                <h3><i class="fas fa-list" style="color:var(--secondary)"></i> Method 2: Manual Install</h3>
+                <p>Clone and set up step-by-step:</p>
                 <div class="code-wrapper">
-                    <button class="copy-btn" title="Copy to clipboard"><i class="far fa-copy"></i></button>
+                    <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
                     <code>pkg update && pkg upgrade -y
 pkg install root-repo git tsu python wpa-supplicant pixiewps iw -y
 git clone https://github.com/ZeronModz/ZerFi
@@ -87,140 +169,167 @@ chmod +x install.sh
 bash install.sh</code>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="card box-reveal">
-            <h2><i class="fas fa-terminal icon-primary"></i> Usage</h2>
-            <p>Simply type the command below to run the tool from anywhere:</p>
-            <div class="code-wrapper">
-                <button class="copy-btn"><i class="far fa-copy"></i></button>
-                <code>zerfi</code>
+    <!-- ═══ Commands ═══ -->
+    <section class="section" id="commands">
+        <div class="container">
+            <div class="section-header box-reveal">
+                <h2>Command Reference</h2>
+                <p>All CLI arguments at a glance.</p>
             </div>
 
-            <div class="accordion mt-4">
-                <div class="accordion-header">
-                    <span><i class="fas fa-wrench"></i> Click Here to Fix "No Superuser Binary Detected"</span>
-                    <i class="fas fa-chevron-down chevron"></i>
+            <div class="card box-reveal">
+                <h2><i class="fas fa-terminal"></i> Usage</h2>
+                <p>Once installed globally, simply run:</p>
+                <div class="code-wrapper">
+                    <button class="copy-btn" title="Copy"><i class="far fa-copy"></i></button>
+                    <code>zerfi</code>
                 </div>
-                <div class="accordion-body">
-                    <p>Run this command in your Termux to patch the tsu binary:</p>
-                    <div class="code-wrapper">
-                        <button class="copy-btn"><i class="far fa-copy"></i></button>
-                        <code>cp /data/data/com.termux/files/usr/bin/tsu /data/data/com.termux/files/usr/bin/tsu.bak && \
+
+                <div class="accordion mt-4" id="fix-accordion">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-wrench"></i> Fix "No Superuser Binary Detected"</span>
+                        <i class="fas fa-chevron-down chevron"></i>
+                    </div>
+                    <div class="accordion-body">
+                        <p>If tsu gives you a superuser error, run this patch:</p>
+                        <div class="code-wrapper">
+                            <button class="copy-btn"><i class="far fa-copy"></i></button>
+                            <code>cp /data/data/com.termux/files/usr/bin/tsu /data/data/com.termux/files/usr/bin/tsu.bak && \
 sed -i '281s|^SU_BINARY_SEARCH=.*|SU_BINARY_SEARCH=("/system/xbin/su" "/system/bin/su" "/debug_ramdisk/su")|' /data/data/com.termux/files/usr/bin/tsu && \
-echo "✅ tsu patched successfully"</code>
+echo "✓ tsu patched successfully"</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cli-grid mt-4">
+                    <div class="cli-item box-reveal">
+                        <span>Interactive Menu</span>
+                        <code>zerfi</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Help / Info</span>
+                        <code>zerfi --help</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Pixie Dust Attack</span>
+                        <code>zerfi -i wlan0 -b &lt;MAC&gt; -K</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Online Brute-force</span>
+                        <code>zerfi -i wlan0 -b &lt;MAC&gt; -B</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Auto Scanner (one-pass)</span>
+                        <code>zerfi -i wlan0 --auto</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Loop Attack</span>
+                        <code>zerfi -i wlan0 -K -l</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Resume Session</span>
+                        <code>zerfi --resume-session &lt;MAC&gt;</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>List Saved Sessions</span>
+                        <code>zerfi --list-sessions</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Signal Analysis</span>
+                        <code>zerfi --signal-analysis</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Check Vulnerability</span>
+                        <code>zerfi -b &lt;MAC&gt; --check-vuln</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Detect Weak Algorithms</span>
+                        <code>zerfi --detect-weak-algo</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Vulnerable Routers</span>
+                        <code>zerfi --pixie-list</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>All Router Models</span>
+                        <code>zerfi --list-all-models</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>HTML Report</span>
+                        <code>zerfi -b &lt;MAC&gt; -K --html-report</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>MAC Changer</span>
+                        <code>zerfi -b &lt;MAC&gt; -B -M</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Reverse Scan Order</span>
+                        <code>zerfi -i wlan0 -r</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Update ZerFi</span>
+                        <code>zerfi update</code>
+                    </div>
+                    <div class="cli-item box-reveal">
+                        <span>Contact Developer</span>
+                        <code>zerfi contact</code>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <h3 class="mt-4">Command-Line Arguments</h3>
-            <p>For advanced users who prefer passing arguments directly:</p>
-            
-            <div class="cli-grid">
-                <div class="cli-item">
-                    <span>Interactive Menu (No Args)</span>
-                    <code>zerfi</code>
-                </div>
-                <div class="cli-item">
-                    <span>Show Help Menu</span>
-                    <code>zerfi --help</code>
-                </div>
-                <div class="cli-item">
-                    <span>Pixie Dust Attack</span>
-                    <code>zerfi -i wlan0 -b &lt;MAC&gt; -K</code>
-                </div>
-                <div class="cli-item">
-                    <span>Online WPS Brute-force</span>
-                    <code>zerfi -i wlan0 -b &lt;MAC&gt; -B</code>
-                </div>
-                <div class="cli-item">
-                    <span>One-Pass Auto Scanner</span>
-                    <code>zerfi -i wlan0 --auto</code>
-                </div>
-                <div class="cli-item">
-                    <span>Scan &amp; Auto Attack (Loop)</span>
-                    <code>zerfi -i wlan0 -K -l</code>
-                </div>
-                <div class="cli-item">
-                    <span>Resume Bruteforce Session</span>
-                    <code>zerfi -i wlan0 --resume-session &lt;MAC&gt;</code>
-                </div>
-                <div class="cli-item">
-                    <span>List Saved Sessions</span>
-                    <code>zerfi -i wlan0 --list-sessions</code>
-                </div>
-                <div class="cli-item">
-                    <span>Signal Analysis Before Attack</span>
-                    <code>zerfi -i wlan0 --signal-analysis</code>
-                </div>
-                <div class="cli-item">
-                    <span>Check Target Vulnerability</span>
-                    <code>zerfi -i wlan0 -b &lt;MAC&gt; --check-vuln</code>
-                </div>
-                <div class="cli-item">
-                    <span>Detect Weak WPS Algorithms</span>
-                    <code>zerfi -i wlan0 --detect-weak-algo</code>
-                </div>
-                <div class="cli-item">
-                    <span>List Pixie Dust Vulnerable Routers</span>
-                    <code>zerfi --pixie-list</code>
-                </div>
-                <div class="cli-item">
-                    <span>List All Router Models in DB</span>
-                    <code>zerfi --list-all-models</code>
-                </div>
-                <div class="cli-item">
-                    <span>Generate HTML Report</span>
-                    <code>zerfi -i wlan0 -b &lt;MAC&gt; -K --html-report</code>
-                </div>
-                <div class="cli-item">
-                    <span>Change MAC on Each Attempt</span>
-                    <code>zerfi -i wlan0 -b &lt;MAC&gt; -B -M</code>
-                </div>
-                <div class="cli-item">
-                    <span>Reverse Scan Order</span>
-                    <code>zerfi -i wlan0 -r</code>
-                </div>
-                <div class="cli-item">
-                    <span>Update ZerFi</span>
-                    <code>zerfi update</code>
-                </div>
-                <div class="cli-item">
-                    <span>Contact DevZeron</span>
-                    <code>zerfi contact</code>
-                </div>
+    <!-- ═══ Troubleshooting ═══ -->
+    <section class="section" id="troubleshoot">
+        <div class="container">
+            <div class="card box-reveal">
+                <h2><i class="fas fa-life-ring" style="color:var(--warning)"></i> Troubleshooting & Tips</h2>
+                <p>If you run into issues, follow these guidelines:</p>
+                <ul class="custom-list alert-list">
+                    <li><strong>Turn off WiFi</strong> on your device before starting the tool.</li>
+                    <li><strong>Enable Mobile Hotspot</strong> — this prevents Android from interfering with <code>wlan0</code>.</li>
+                    <li>If you see <em>"Device or resource busy (-16)"</em>, toggle WiFi off and back on.</li>
+                    <li><strong>Disable GPS/Location</strong> if scanning or authentication fails.</li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="card box-reveal">
-            <h2><i class="fas fa-life-ring icon-primary"></i> Troubleshooting & Notes</h2>
-            <p>If you encounter issues during the attack, follow these steps:</p>
-            <ul class="custom-list alert-list">
-                <li><strong>Turn off your device's WiFi</strong> before starting the tool.</li>
-                <li><strong>Turn on your Mobile Hotspot</strong> (this prevents Android from interfering with the wlan0 interface).</li>
-                <li>If you receive a <em>"Device or resource busy (-16)"</em> error, manually turn your WiFi on and then immediately turn it back off.</li>
-                <li>If the tool fails to scan or authenticate, try <strong>turning off your device's Location/GPS services</strong>.</li>
-            </ul>
-        </section>
+    <!-- ═══ Disclaimer ═══ -->
+    <section class="section">
+        <div class="container">
+            <div class="card disclaimer-card box-reveal">
+                <h2><i class="fas fa-exclamation-triangle"></i> Disclaimer</h2>
+                <p>This tool is provided for <strong>educational and ethical penetration testing</strong> purposes only. You are only authorized to use ZerFi on networks you own or have explicit permission to test. The author is not responsible for any misuse or illegal activities.</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="card disclaimer-card box-reveal">
-            <h2><i class="fas fa-exclamation-triangle"></i> Disclaimer</h2>
-            <p>This tool is provided for <strong>educational and ethical penetration testing purposes only</strong>. You are only authorized to use ZerFi on networks that you own or have explicit permission to test. The author is not responsible for any misuse, damage, or illegal activities caused by this tool.</p>
-        </section>
-    </main>
-
+    <!-- ═══ Footer ═══ -->
     <footer>
-        <div class="container footer-content">
-            <div class="author-info">
-                <h3>DevZeron (Hasan)</h3>
-                <div class="socials">
-                    <a href="https://github.com/ZeronModz" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3><i class="fas fa-terminal" style="color:var(--primary)"></i> ZerFi</h3>
+                    <p>Advanced WiFi security auditing tool for Android Termux. v2.0</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect</h3>
+                    <a href="https://github.com/ZeronModz/ZerFi" target="_blank"><i class="fab fa-github"></i> GitHub</a><br>
+                    <a href="https://github.com/ZeronModz" target="_blank"><i class="fab fa-github"></i> DevZeron</a><br>
                     <a href="https://t.me/DevZeron" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
                 </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <p>Licensed under <strong>MIT License</strong>.</p>
+                    <p style="margin-top:6px;">&copy; 2026 ZerFi Project</p>
+                </div>
             </div>
-            <div class="license">
-                <p>Licensed under the <strong>MIT License</strong>.</p>
-                <p>&copy; 2026 ZerFi Project.</p>
+            <div class="footer-bottom">
+                <p>Built with <i class="fas fa-heart" style="color:var(--danger)"></i> by <a href="https://github.com/ZeronModz" target="_blank">DevZeron (Hasan)</a></p>
             </div>
         </div>
     </footer>

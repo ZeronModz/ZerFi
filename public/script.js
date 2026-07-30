@@ -1,68 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Copy to Clipboard Functionality
-    const copyButtons = document.querySelectorAll('.copy-btn');
-    
-    copyButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const codeElement = btn.nextElementSibling;
-            const textToCopy = codeElement.innerText;
-            
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                // Change icon to checkmark
-                const icon = btn.querySelector('i');
-                icon.className = 'fas fa-check';
-                btn.style.color = '#10b981';
-                btn.style.borderColor = '#10b981';
-                
-                // Revert back after 2 seconds
-                setTimeout(() => {
-                    icon.className = 'far fa-copy';
-                    btn.style.color = '';
-                    btn.style.borderColor = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        });
+  // ─── Header scroll effect ───
+  const header = document.querySelector('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ─── Copy to Clipboard ───
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.nextElementSibling?.innerText || '';
+      if (!code) return;
+      navigator.clipboard.writeText(code).then(() => {
+        const icon = btn.querySelector('i');
+        const orig = icon.className;
+        icon.className = 'fas fa-check';
+        btn.style.color = '#10b981';
+        btn.style.borderColor = '#10b981';
+        setTimeout(() => {
+          icon.className = orig;
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }).catch(() => {});
     });
+  });
 
-    // 2. Accordion Functionality for "Fix Superuser"
-    const accordionHeader = document.querySelector('.accordion-header');
-    if(accordionHeader) {
-        accordionHeader.addEventListener('click', () => {
-            const accordion = accordionHeader.parentElement;
-            accordion.classList.toggle('active');
-        });
-    }
-
-    // 3. Scroll Reveal Animation
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Trigger only once
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.box-reveal').forEach(box => {
-        observer.observe(box);
+  // ─── Accordion ───
+  document.querySelectorAll('.accordion-header').forEach(h => {
+    h.addEventListener('click', () => {
+      h.parentElement.classList.toggle('active');
     });
+  });
 
-    // Trigger reveal immediately for elements already in viewport
-    setTimeout(() => {
-        document.querySelectorAll('.box-reveal').forEach(box => {
-            const rect = box.getBoundingClientRect();
-            if(rect.top < window.innerHeight) {
-                box.classList.add('visible');
-            }
-        });
-    }, 100);
+  // ─── Terminal typing stagger ───
+  document.querySelectorAll('.terminal-line').forEach((line, i) => {
+    line.style.animationDelay = `${0.3 + i * 0.12}s`;
+  });
+
+  // ─── Scroll Reveal (Intersection Observer) ───
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.box-reveal').forEach(el => observer.observe(el));
+
+  // ─── Reveal already-visible elements immediately ───
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.box-reveal:not(.visible)').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+        el.classList.add('visible');
+      }
+    });
+  });
 });
