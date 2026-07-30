@@ -1,13 +1,6 @@
 <div align="center">
 
-```
-███████╗███████╗██████╗ ███████╗██╗
-╚══███╔╝██╔════╝██╔══██╗██╔════╝██║
-  ███╔╝ █████╗  ██████╔╝█████╗  ██║
- ███╔╝  ██╔══╝  ██╔══██╗██╔══╝  ██║
-███████╗███████╗██║  ██║██║     ██║
-╚══════╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
-```
+<img src="public/banner.svg" alt="ZerFi Banner" width="800" style="max-width:100%;border-radius:12px;margin-bottom:20px;">
 
 **ZerFi v2.0** — WPS Security Auditing Tool for Android / Termux
 
