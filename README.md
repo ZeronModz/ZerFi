@@ -15,6 +15,7 @@
 [![Platform](https://img.shields.io/badge/platform-Android%20%2F%20Termux-blue)](https://termux.dev)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=ZeronModz.zerfi)](https://github.com/ZeronModz/ZerFi)
+[![Website](https://img.shields.io/badge/website-zerfi.vercel.app-brightgreen?logo=vercel)](https://zerfi.vercel.app)
 
 </div>
 
